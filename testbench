@@ -1,0 +1,37 @@
+//Testbench:
+
+module washmacTB;
+
+ reg rst,clk,power,fill_water,add_det;
+ wire out;
+
+ washing_machine wm(.rst(rst),.clk(clk),.power(power),.fill_water(fill_water),.add_det(add_det),.out(out));
+
+ initial begin
+
+ $monitor($time,"rst %b clk %b power %b fill_water %b add_det %b out %b",rst,clk,power,fill_water,add_det,out);
+
+ clk=0;
+ rst=1;
+ power=1;
+ fill_water=1;
+ add_det=0;
+
+#5 rst=0;
+#5 power=1;
+#5 fill_water=1;
+#5 add_det=1;
+
+#5 power=1;
+#5 fill_water=1;
+#5 add_det=0;
+
+#5 power=1;
+#5 fill_water=0;
+#5 add_det=1;
+
+ end
+
+ always #1 clk = ~clk;
+
+endmodule
