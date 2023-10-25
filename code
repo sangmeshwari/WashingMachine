@@ -1,0 +1,91 @@
+//Code: 
+
+module washing_machine(rst,clk,power,fill_water,add_det,out);
+
+ input rst,clk,power,fill_water,add_det;
+ output out;
+ reg out;
+
+ reg [3:0] count=0;
+ reg [1:0] state;
+
+ parameter idle=0,a=1,b=2,c=3; 
+
+ always @(posedge clk) begin
+
+  if (rst==1) begin
+ 
+  state <= idle;
+  out <= 0;
+
+  end
+ 
+  else 
+
+ case (state)
+
+ idle: if (power==1) begin
+
+  state <= a;
+  out <= 0;
+
+  end
+
+ else 
+  begin
+  
+  state <= idle;
+  out <= 0;
+
+  end
+
+ a: if (fill_water==1) begin
+
+  state <= b;
+  out <= 0;
+
+  end
+
+ else 
+  begin
+
+  state <= a;
+  out <= 0;
+ 
+  end
+
+ b: if (add_det==1) begin
+
+  state <= c;
+  out <= 0;
+  
+  end
+
+ else
+  begin
+
+  state <= b;
+  out <= 0;
+
+  end
+
+ c: if (fill_water==1) begin
+
+  state <= idle;
+  out <= 1;
+  
+  end
+
+ else
+  begin
+
+  state <= c;
+  out <= 0;
+
+  end
+ 
+ endcase
+
+     end
+
+endmodule
