@@ -7,6 +7,6 @@ First of all, Let us see the FSM of a simple washing machine:
 The output waveform of the FSM will be like 
 ![output waveform](https://github.com/sangmeshwari/WashingMachine/assets/148992501/cf319537-34a6-47a8-9c41-50e0f2a336d3)
 
-the coverage of the above sequential design is 
+The coverage of the above sequential design is 
 ![coverage](https://github.com/sangmeshwari/WashingMachine/assets/148992501/a498e9b7-25c4-4c51-ade6-44cf185c9de8)
  We have got the overall coverage of our design as 90.36%. 
